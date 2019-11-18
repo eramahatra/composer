@@ -1,8 +1,11 @@
 stages:
-- name: composer
+- name: Build
   steps:
-  - runScriptConfig:
-      image: composer
-      shellScript: composer install
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: papango/composer
+      pushRemote: true
+      registry: 127.0.0.1:34665
 timeout: 60
 notification: {}
